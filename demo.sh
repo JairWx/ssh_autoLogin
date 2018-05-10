@@ -1,11 +1,10 @@
 #!/usr/bin/expect                 
-#--------------------
-#
-#  ssh 实现自动输入密码登录指定docker的功能
-#  
-#
-#--------------------
-set timeout 3                       
-spawn ssh docker@192.168.99.100
-send "tcuser\r"               
+set timeout 4
+
+set host docker@192.168.99.100 #用户名@主机ip
+set password tcuser #密码
+
+set port 22 #端口
+spawn ssh $host -p $port
+send "$password\r"               
 interact                           
